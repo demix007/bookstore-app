@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+html,
+body,
+.main-App {
+  min-height: 100vh;
+}
+
+.main-App {
+  margin-inline-start: 5rem;
+}
+
+.app-content {
+  min-height: 80vh;
+}
+
+.nav {
+  display: flex;
+  background-color: rgb(227, 232, 241);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10vh;
+  padding-left: 5rem;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  width: 27rem;
+  font-size: 1.75rem;
+}
+
+.book-details {
+  margin-bottom: 3rem;
+  padding: 1rem;
+}
+.status-container {
+  display: flex;
+}
+
+.app-header {
+  font-size: 2.5rem;
+  font-weight: 400;
+}
+
+.form {
+  padding: 1rem;
+}
