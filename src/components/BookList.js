@@ -1,17 +1,22 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import BookForm from './BookForm';
 import Book from './Book';
-import FormBook from './Form';
 
-class BookList extends React.PureComponent {
-  render() {
+const BookList = () => {
+  const books = useSelector((state) => state.book);
     return (
-      <div>
-        <Book title="Book-Title 1" author="Book-Author 1" />
-        <Book title="Book-Title 2" author="aBook-Author 2" />
-        <Book title="Book-Title 3" author="Book-Author 3" />
-        <FormBook />
+      <div className='book_details'>
+        {books?.map((book) => (
+          <Book
+            id={book.id}
+            author={ book.author }
+            title={ book.title }
+            key={ book.id }
+          />
+        ))}
+        <BookForm />
       </div>
     );
-  }
 }
 export default BookList;
