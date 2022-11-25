@@ -1,6 +1,6 @@
 # Bookstore
 
-- This repo contains a bookstore App project. The project lays foundations for the Bookstore website. I created the React part of the app and also set up routing using React Router
+- This repo contains a bookstore App project. The project lays foundations for the Bookstore website. I created the React part of the app and also set up routing using React Router. I also added redux to the project. 
 
 ## Built With
 
