@@ -24,7 +24,6 @@ body,
 .nav {
   display: flex;
   background-color: rgb(227, 232, 241);
-  display: flex;
   justify-content: space-between;
   align-items: center;
   height: 10vh;
@@ -43,6 +42,7 @@ body,
   margin-bottom: 3rem;
   padding: 1rem;
 }
+
 .status-container {
   display: flex;
 }

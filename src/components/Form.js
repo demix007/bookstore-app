@@ -7,7 +7,7 @@ class FormBook extends React.PureComponent {
         <form className="form">
           <input type="text" name="title" className="title-input" placeholder="Book Title" />
           <input type="text" name="author" className="author-input" placeholder="Book Author" />
-          <button type="button" className="addBook-input" >Add book</button>
+          <button type="button" className="addBook-input">Add book</button>
         </form>
       </div>
     );
