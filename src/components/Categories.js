@@ -11,7 +11,7 @@ const Categories = () => {
   };
   return (
     <div className="status-container">
-      <p>{message}</p>
+      <h1>{message}</h1>
       <button
         type="button"
         className="remove-button"
