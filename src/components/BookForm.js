@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addBook } from '../redux/books/books';
 
 const BookForm = () => {
   const [author, setAuthor] = useState('');
   const [title, setTitle] = useState('');
-  const [counter, setCounter] = useState(0);
   const dispatch = useDispatch();
+  const books = useSelector((state) => state.book);
+  const counterInitialState = Number(books[books.length - 1].id) + 1;
+  const [counter, setCounter] = useState(counterInitialState.toString());
 
   const addBookHandler = () => {
     if (title !== '' && author !== '') {
