@@ -86,7 +86,7 @@ Give a ⭐️ if you like this project!
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### 📝 License <a name="license"></a>
-> Copyright 2021, [CHUKWUMA PAUL MOSANYA]
+> Copyright 2021, [Ayodeji Abidemi]
 
 > Permission is hereby granted, free of charge, to any person obtaining a copy of this [BOOKSTORE] and associated documentation files, to deal in the [BOOKSTORE] without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the [BOOKSTORE], and to permit persons to whom the [BOOKSTORE] is furnished to do so, subject to the following conditions:
 
