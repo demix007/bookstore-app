@@ -73,7 +73,6 @@ body {
 .form-Container {
   width: 100%;
   justify-content: space-between;
-  padding-top: 1rem;
   border-top: 1px solid #e8e8e8;
   padding-top: 1.5rem;
   padding-bottom: 2rem;
@@ -112,10 +111,6 @@ a:visited {
   justify-content: space-between;
   border: 2px solid rgb(238, 237, 237);
   margin-block-end: 1rem;
-}
-
-.bookInfo {
-
 }
 
 .book-title {
@@ -170,7 +165,7 @@ a:visited {
 }
 
 .completed-text {
-  font-size: 1;
+  font-size: 1.1rem;
   font-family: 'Montserrat', sans-serif;
   opacity: 0.6;
 }
