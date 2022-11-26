@@ -1,23 +1,31 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addBook } from '../redux/books/books';
+import { v4 as uuidv4 } from 'uuid';
+import { useDispatch } from 'react-redux';
+import { addNewBook } from '../redux/books/books';
 
 const BookForm = () => {
   const [author, setAuthor] = useState('');
   const [title, setTitle] = useState('');
   const dispatch = useDispatch();
-  const books = useSelector((state) => state.book);
-  const counterInitialState = Number(books[books.length - 1].id) + 1;
-  const [counter, setCounter] = useState(counterInitialState.toString());
 
-  const addBookHandler = () => {
+  const addBookHandler = (e) => {
+    e.preventDefault();
     if (title !== '' && author !== '') {
-      dispatch(addBook(author, title, counter));
-      setCounter(counter + 1);
+      const newBook = {
+        id: uuidv4(),
+        title,
+        author,
+      };
+
+      dispatch(addNewBook(newBook));
       setAuthor('');
       setTitle('');
     }
   };
+
+  const getTitle = (e) => setTitle(e.target.value);
+
+  const getAuthor = (e) => setAuthor(e.target.value);
 
   return (
     <div className="form-container">
@@ -28,7 +36,7 @@ const BookForm = () => {
           value={title}
           className="title-input"
           placeholder="Book Title"
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={getTitle}
         />
 
         <input
@@ -37,7 +45,7 @@ const BookForm = () => {
           value={author}
           className="title-input"
           placeholder="Book Author"
-          onChange={(e) => setAuthor(e.target.value)}
+          onChange={getAuthor}
         />
 
         <button
