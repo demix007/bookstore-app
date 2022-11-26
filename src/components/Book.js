@@ -1,14 +1,14 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { removeBook } from '../redux/books/books';
+import { deleteBook } from '../redux/books/books';
 
 const Book = (props) => {
   const dispatch = useDispatch();
   const { title, author, id } = props;
 
-  const removeBookHandler = (e) => {
-    dispatch(removeBook((e.target.id)));
+  const removeBookAction = (e) => {
+    dispatch(deleteBook((e.target.id)));
   };
 
   return (
@@ -19,17 +19,18 @@ const Book = (props) => {
         type="button"
         id={id}
         className="remove-button"
-        onClick={removeBookHandler}
+        onClick={removeBookAction}
       >
-        Remove book
+        Remove Book
       </button>
     </div>
   );
 };
+
 Book.propTypes = {
   id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 
 };
 export default Book;

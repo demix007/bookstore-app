@@ -1,33 +1,90 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
+
+const appUrl = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/HYvefzS5gcHT0i7sKve7/books';
 const ADD_BOOK = 'bookstore/books/ADD_BOOK';
 const REMOVE_BOOK = 'bookstore/books/REMOVE_BOOK';
+const FETCH_BOOK = 'bookstore/books/FETCH_BOOK';
 
-const initialState = [
-  {
-    id: '0',
-    title: 'Book 1',
-    author: 'Author 1',
-  },
-  {
-    id: '1',
-    title: 'Book 2',
-    author: 'Author 2',
-  },
-];
+const fetchBook = (data) => ({
+  type: FETCH_BOOK,
+  data,
+});
 
-export const addBook = (title, author, id) => ({
+const addBook = (title, author, id) => ({
   type: ADD_BOOK,
   title,
   author,
   id,
 });
 
-export const removeBook = (id) => ({
+const removeBook = (id) => ({
   type: REMOVE_BOOK,
   id,
 });
 
-const bookReducer = (state = initialState, action) => {
+const getBooks = createAsyncThunk(
+  'books/getBooks',
+  async (_, thunkApi) => fetch(appUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      thunkApi.dispatch(fetchBook(Object.entries(data)));
+    }),
+);
+
+const addNewBook = createAsyncThunk(
+  'books/addNewBook',
+  async (obj1, thunkApi) => {
+    const { author, id, title } = obj1;
+    return fetch(appUrl, {
+      method: 'POST',
+      body: JSON.stringify({
+        item_id: id,
+        title,
+        author,
+        category: 'MANGA',
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          thunkApi.dispatch(addBook(author, title, id));
+        }
+      });
+  },
+);
+
+const deleteBook = createAsyncThunk(
+  'books/deleteBook',
+  async (id, thunkApi) => fetch(`${appUrl}/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  })
+    .then((res) => {
+      if (res.ok) {
+        thunkApi.dispatch(removeBook(id));
+      }
+    }),
+);
+
+const bookReducer = (state = [], action) => {
+  const bookList = [];
   switch (action.type) {
+    case FETCH_BOOK:
+      action.data.forEach((item) => {
+        const newbook = {
+          id: item[0],
+          title: item[1][0].title,
+          author: item[1][0].author,
+        };
+        bookList.push(newbook);
+      });
+      return [
+        ...bookList,
+      ];
     case ADD_BOOK:
       return [
         ...state,
@@ -46,4 +103,7 @@ const bookReducer = (state = initialState, action) => {
   }
 };
 
+export {
+  deleteBook, addNewBook, removeBook, addBook, getBooks,
+};
 export default bookReducer;
