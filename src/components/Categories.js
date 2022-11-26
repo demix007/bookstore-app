@@ -6,20 +6,20 @@ const Categories = () => {
   const dispatch = useDispatch();
   const message = useSelector((state) => state.categories);
 
-  const buttonHandler = () => {
+  const statusButtonHandler = (e) => {
+    e.preventDefault();
     dispatch(checkStatus());
   };
   return (
     <div className="status-container">
-      <h1>{message}</h1>
       <button
-        type="button"
-        className="remove-button"
-        onClick={buttonHandler}
+        type="submit"
+        className="status-button"
+        onClick={statusButtonHandler}
       >
         Check Status
       </button>
-
+      <h1 className="status-message">{message}</h1>
     </div>
   );
 };
