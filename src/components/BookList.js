@@ -13,15 +13,19 @@ const BookList = () => {
   }, [dispatch]);
 
   return (
-    <div className="book_details">
-      {books?.map((book) => (
-        <Book
-          title={book.title}
-          author={book.author}
-          id={book.id}
-          key={book.id}
-        />
-      ))}
+    <div className="book-div">
+      <div className="book-details">
+        {books?.map((book) => (
+          <Book
+            title={book.title}
+            author={book.author}
+            id={book.id}
+            key={book.id}
+            percent={book.percent}
+            chapter={book.chapter}
+          />
+        ))}
+      </div>
       <BookForm />
     </div>
   );

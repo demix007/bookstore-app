@@ -29,12 +29,13 @@ const BookForm = () => {
 
   return (
     <div className="form-container">
+      <h2 className="form-header">ADD NEW BOOK</h2>
       <form className="form">
         <input
           name="title"
           type="text"
           value={title}
-          className="title-input"
+          className="form-input"
           placeholder="Book Title"
           onChange={getTitle}
         />
@@ -43,14 +44,14 @@ const BookForm = () => {
           name="author"
           type="text"
           value={author}
-          className="title-input"
+          className="form-input"
           placeholder="Book Author"
           onChange={getAuthor}
         />
 
         <button
           type="button"
-          className="addBook-input"
+          className="addBook-button"
           onClick={addBookHandler}
         >
           Add book
